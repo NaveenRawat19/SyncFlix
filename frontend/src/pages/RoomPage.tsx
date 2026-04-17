@@ -8,7 +8,7 @@ import ChatPanel from '../components/ChatPanel';
 import ViewersList from '../components/ViewersList';
 import { ArrowLeft, Settings, Users, MessageSquare, Share2 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import styles from 'RoomPage.module.css';
+import styles from './RoomPage.module.css';
 
 export default function RoomPage() {
   const { id } = useParams<{ id: string }>();
