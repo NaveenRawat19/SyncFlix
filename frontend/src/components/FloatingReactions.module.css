@@ -1,0 +1,22 @@
+.container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.emoji {
+  position: absolute;
+  bottom: 60px;
+  font-size: 26px;
+  animation: floatUp 1.8s ease forwards;
+  transform-origin: center bottom;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  60%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-120px) scale(1.4); }
+}

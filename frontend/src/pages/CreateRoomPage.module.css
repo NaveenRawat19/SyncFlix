@@ -1,0 +1,109 @@
+.page {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 24px;
+  background: radial-gradient(ellipse 50% 40% at 50% 0%, rgba(124,58,237,0.06) 0%, transparent 70%);
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: fadeIn 0.3s ease both;
+}
+
+.title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+.sub { font-size: 13px; color: var(--text-2); margin-bottom: 10px; }
+
+.form { display: flex; flex-direction: column; gap: 18px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.input, .textarea, .select {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-1);
+  font-size: 14px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: var(--font);
+}
+.input:focus, .textarea:focus, .select:focus { border-color: var(--accent); }
+.input::placeholder, .textarea::placeholder { color: var(--text-3); }
+.textarea { resize: vertical; min-height: 80px; }
+.select { appearance: none; cursor: pointer; }
+.select option { background: var(--bg-card); }
+
+.hint { font-size: 11px; color: var(--text-3); font-family: var(--mono); }
+
+.accessGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.accessOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+.accessOption:hover { border-color: var(--text-2); }
+.accessActive { border-color: var(--accent) !important; background: var(--accent-dim) !important; }
+.accessIcon { font-size: 22px; }
+.accessTitle { font-size: 13px; font-weight: 700; }
+.accessDesc { font-size: 11px; color: var(--text-2); margin-top: 2px; }
+
+.actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+
+.btnCancel {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-2);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.15s;
+}
+.btnCancel:hover { border-color: var(--text-2); color: var(--text-1); }
+
+.btnSubmit {
+  padding: 10px 28px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: opacity 0.15s;
+  box-shadow: 0 0 18px rgba(230,60,110,0.3);
+}
+.btnSubmit:hover { opacity: 0.87; }
+.btnSubmit:disabled { opacity: 0.5; cursor: not-allowed; }
