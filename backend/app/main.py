@@ -11,7 +11,12 @@ from app.services.socket_manager import create_sio
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await init_db()
+    try:
+        await init_db()
+    except Exception as e:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f"Failed to initialize database during startup: {e}")
     yield
 
 
