@@ -38,7 +38,7 @@ export const useAuthStore = create<AuthStore>()(
     }),
     {
       name: 'sf-auth',
-      partialise: (state) => ({ user: state.user, token: state.token, isAuthenticated: state.isAuthenticated }),
+      partialise: (state: AuthStore) => ({ user: state.user, token: state.token, isAuthenticated: state.isAuthenticated }),
     } as any
   )
 );
