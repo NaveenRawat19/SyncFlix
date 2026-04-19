@@ -9,7 +9,13 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "app/main.py"
+      "dest": "app/main.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://sync-flix-pwl9.vercel.app",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Authorization, Content-Type, Accept",
+        "Access-Control-Allow-Credentials": "true"
+      }
     }
   ]
 }
