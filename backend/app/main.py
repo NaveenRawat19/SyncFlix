@@ -12,7 +12,7 @@ from app.services.socket_manager import create_sio
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     try:
-        await init_db()
+        init_db()
     except Exception as e:
         import logging
         logger = logging.getLogger(__name__)
