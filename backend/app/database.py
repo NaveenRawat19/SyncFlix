@@ -1,16 +1,23 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker, Session, DeclarativeBase
 from app.config import settings
 import logging
 
 logger = logging.getLogger(__name__)
 
-# Initialize engine and session maker
 try:
-    engine = create_engine(settings.DATABASE_URL, echo=False, connect_args={"ssl_context": True})
+    engine = create_engine(
+        settings.DATABASE_URL,
+        echo=False,
+        pool_pre_ping=True,        # test connection before using it
+        pool_recycle=300,          # recycle connections every 5 mins
+        connect_args={
+            "ssl_context": True    # enable SSL for pg8000
+        }
+    )
     SessionLocal = sessionmaker(engine, expire_on_commit=False)
 except Exception as e:
-    logger.warning(f"Failed to initialize database engine: {e}. Database operations may not be available.")
+    logger.warning(f"Failed to initialize database engine: {e}")
     engine = None
     SessionLocal = None
 
@@ -31,7 +38,7 @@ def get_db() -> Session:
 
 def init_db():
     if engine is None:
-        logger.warning("Database engine not initialized, skipping database initialization")
+        logger.warning("Database engine not initialized, skipping")
         return
     try:
         Base.metadata.create_all(bind=engine)
